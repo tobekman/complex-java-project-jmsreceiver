@@ -25,19 +25,19 @@ public class Receiver {
             FileWriter writer = new FileWriter(newFile.getName());
             writer.write("ORDER: " + orderMessage.getId());
             writer.write("\nDate: " + orderMessage.getLocalDateTime());
-            writer.write("\nAddress: ");
-            writer.write("\n" + orderMessage.getCustomer().getName());
-            writer.write("\n" + orderMessage.getCustomer().getStreet());
-            writer.write("\n" + orderMessage.getCustomer().getPostalCode());
-            writer.write("\n" + orderMessage.getCustomer().getCity());
+            writer.write("\n\nAddress: ");
+            writer.write("\n\t" + orderMessage.getCustomer().getName());
+            writer.write("\n\t" + orderMessage.getCustomer().getStreet());
+            writer.write("\n\t" + orderMessage.getCustomer().getPostalCode());
+            writer.write("\n\t" + orderMessage.getCustomer().getCity());
             writer.write("\n\nITEMS: ");
             if(orderMessage.getItems() != null) {
                 for(MessageItem item : orderMessage.getItems()) {
-                    writer.write("\n" + item.getName() + " - " + item.getPrice());
+                    writer.write("\n\t" + item.getName() + " - " + item.getPrice());
                     price += item.getPrice();
                 }
             }
-            writer.write("\nTotal price: " + price);
+            writer.write("\n\nTotal price: " + price);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
